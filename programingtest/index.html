@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>プログラミング問題</title>
+	<style rel="stylesheet" media="all">
+		.con_test {
+			margin-top: 10%;
+		}
+	</style>
+	<script type="text/javascript" charset="UTF-8">
+		function sum1(_list) {
+			let _r = 0;
+			let _len = _list.length;
+			for (let i = 0; i < _len; i++) {
+				let _el = _list[i];
+				_r += _el;
+			}
+			return _r;
+		}
+		function sum2(_list) {
+			let _r = 0;
+			let _len = _list.length;
+			let i = 0;
+			while (i < _len) {
+				let _el = _list[i];
+				_r += _el;
+				i++;
+			}
+			return _r;
+		}
+		function sum3(_list, _t = _list.length - 1, _r = 0) {
+			if (_t >= 0) {
+				_r += _list[_t];
+				return sum3(_list, _t - 1, _r);
+			} else {
+				return _r;
+			}
+		}
+		let sum4 = (_list1, _list2) => _list1.map((x, i) => [x, _list2[i]]).reduce((list, x) => list.concat(x));
+		function sum5(_m) {
+			let _arr = [];
+			let _len = 0;
+			let i = 0;
+			let _r = 0;
+			while (_len < _m) {
+				if (i <= 1) {
+					_arr.push(i);
+				} else {
+					_arr.push(i);
+					_r = _arr[i - 2] + _arr[i - 1];
+					_arr.splice(i, 1, _r);
+				}
+				_len = _arr.length;
+				i++;
+			}
+			return _arr;
+		}
+		function sum6(_list) {
+			let _arr1 = [];
+			let _arr2 = [];
+			let _len = _list.length;
+			let _len2 = 0;
+			let _arrs = [];
+			for (let i = 0; i < _len; i++) {
+				const _el = _list[i];
+				let _s = String(_el);
+				_arrs.push(_s);
+				_arr2.push(parseInt(_s.split('')[0]));
+			}
+			_arr2.sort((a, b) => a < b ? 1 : -1);
+			_len2 = _arr2.length;
+			for (let l = 0; l < _len2; l++) {
+				let _o = parseInt(_arrs[l].split('')[0]);
+				let _l = 0;
+				while (_len2 > _l) {
+					if (_arr2[_l] === _o) {
+						// for (let s = 0; s < _lens; s++) {
+						// 	let _el = _arrs[s];
+						// 	console.log(_el);
+						// }
+					}
+					_l++;
+				}
+			}
+			return _arr1;
+		}
+		function q1() {
+			let _arr = [1, 2, 3, 9, 10, 11];
+			console.log('<q1>while is:', sum2(_arr));
+			console.log('<q1>for is:', sum1(_arr));
+			console.log('<q1>recursion is:', sum3(_arr));
+		}
+		function q2() {
+			let _arr1 = ['a', 'b', 'c', 'd'];
+			let _arr2 = [2, 3, 4, 5];
+			console.log('<q2>', sum4(_arr1, _arr2));
+		}
+		function q3() {
+			let _max = 100;
+			console.log('<q3>', sum5(_max));
+		}
+		function q4() {
+			let _arr = [50, 2000, 199999, 9];
+			console.log('<q4>', sum6(_arr));
+		}
+		//問題1
+		q1();
+		//問題2
+		q2();
+		//問題3
+		q3();
+		//問題4
+		q4();
+	</script>
+</head>
+
+<body>
+	<h1>以下の問題を1時間以内に解いてください</h1>
+	<section class="con_test">
+		<h2>問題1</h2>
+		<p>forループ、whileループ、および再帰を使用して、リスト内の数字の合計を計算する3つの関数を記述せよ。</p>
+	</section><!-- /.con_test -->
+	<section class="con_test">
+		<h2>問題2</h2>
+		<p>交互に要素を取ることで、2つのリストを結合する関数を記述せよ。例えば [a, b, c]と[1, 2, 3]という2つのリストを与えると、関数は [a, 1, b, 2, c, 3]を返す。</p>
+	</section><!-- /.con_test -->
+	<section class="con_test">
+		<h2>問題3</h2>
+		<p>最初の100個のフィボナッチ数のリストを計算する関数を記述せよ。定義では、フィボナッチ数列の最初の2つの数字は0と1で、次の数は前の2つの合計となる。例えば最初の10個のフィボナッチ数列は、0, 1, 1, 2, 3,
+			5, 8, 13, 21, 34となる。</p>
+	</section><!-- /.con_test -->
+	<section class="con_test">
+		<h2>問題4</h2>
+		<p>正の整数のリストを与えられたとき、数を並び替えて可能な最大数を返す関数を記述せよ。例えば、[50, 2, 1, 9]が与えられた時、95021が答えとなる</p>
+	</section><!-- /.con_test -->
+	<section class="con_test">
+		<h2>問題5</h2>
+		<p>1,2,…,9の数をこの順序で、"+"、"-"、またはななにもせず結果が100となるあらゆる組合せを出力するプログラムを記述せよ。例えば、1 + 2 + 34 – 5 + 67 – 8 + 9 = 100となる</p>
+	</section><!-- /.con_test -->
+</body>
+
+</html>
