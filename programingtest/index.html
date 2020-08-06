@@ -60,33 +60,34 @@
 			return _arr;
 		}
 		function sum6(_list) {
-			let _arr1 = [];
-			let _arr2 = [];
+			let _s = '';
+			let _arr = [];
 			let _len = _list.length;
 			let _len2 = 0;
 			let _arrs = [];
+			let _arrs2 = [];
+			let _c = 0;
 			for (let i = 0; i < _len; i++) {
 				const _el = _list[i];
 				let _s = String(_el);
 				_arrs.push(_s);
-				_arr2.push(parseInt(_s.split('')[0]));
+				_arr.push(parseInt(_s.split('')[0]));
 			}
-			_arr2.sort((a, b) => a < b ? 1 : -1);
-			_len2 = _arr2.length;
+			_arr.sort((a, b) => a < b ? 1 : -1);
+			_len2 = _arr.length;
 			for (let l = 0; l < _len2; l++) {
-				let _o = parseInt(_arrs[l].split('')[0]);
-				let _l = 0;
-				while (_len2 > _l) {
-					if (_arr2[_l] === _o) {
-						// for (let s = 0; s < _lens; s++) {
-						// 	let _el = _arrs[s];
-						// 	console.log(_el);
-						// }
+				_arrs2.push(parseInt(_arrs[l].split('')[0]));
+			}
+			for (let h = 0; h < _len2; h++) {
+				for (let hh = 0; hh < _len2; hh++) {
+					if (_arr[_c] === _arrs2[hh]) {
+						_s += _arrs[hh];
+						_c++;
 					}
-					_l++;
 				}
 			}
-			return _arr1;
+			_s = Number(_s);
+			return _s;
 		}
 		function q1() {
 			let _arr = [1, 2, 3, 9, 10, 11];
@@ -104,7 +105,7 @@
 			console.log('<q3>', sum5(_max));
 		}
 		function q4() {
-			let _arr = [50, 2000, 199999, 9];
+			let _arr = [50, 2, 1, 9];
 			console.log('<q4>', sum6(_arr));
 		}
 		//問題1
